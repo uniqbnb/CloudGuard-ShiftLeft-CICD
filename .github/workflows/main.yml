@@ -6,9 +6,9 @@ name: Check Point CloudGuard Assessment
 # events but only for the master branch
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, sg-test ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, sg-test ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
