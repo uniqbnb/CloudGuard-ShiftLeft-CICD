@@ -28,8 +28,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run IAC assessment on Terraform folder
         run: |
-          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=spn6sacefhqxsbxw1snnhftn" -e \
-          "CHKP_CLOUDGUARD_SECRET=24fdfac3-5739-4576-b916-bfcf6b370fda" checkpoint/shiftleft shiftleft iac-assessment -p /tmp/terraform/ -r -64 -w
+          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=24fdfac3-5739-4576-b916-bfcf6b370fda" -e \
+          "CHKP_CLOUDGUARD_SECRET=spn6sacefhqxsbxw1snnhftn" checkpoint/shiftleft shiftleft iac-assessment -p /tmp/terraform/ -r -64 -w
   Image_Scanner:
     runs-on: ubuntu-latest
     steps:
@@ -41,8 +41,8 @@ jobs:
       - name: Run Shiftleft assessment on built image
         run: |  
           docker pull checkpoint/shiftleft
-          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=spn6sacefhqxsbxw1snnhftn" -e \
-          "CHKP_CLOUDGUARD_SECRET=24fdfac3-5739-4576-b916-bfcf6b370fda" checkpoint/shiftleft shiftleft image-scan -i /tmp/badimage.tar
+          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=24fdfac3-5739-4576-b916-bfcf6b370fda" -e \
+          "CHKP_CLOUDGUARD_SECRET=spn6sacefhqxsbxw1snnhftn" checkpoint/shiftleft shiftleft image-scan -i /tmp/badimage.tar
   Code_Scanner:
     runs-on: ubuntu-latest
     steps:
@@ -50,6 +50,6 @@ jobs:
       - name: Run SourceGuard scan on code
         run: |
           docker pull checkpoint/shiftleft
-          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=spn6sacefhqxsbxw1snnhftn" -e \
-          "CHKP_CLOUDGUARD_SECRET=24fdfac3-5739-4576-b916-bfcf6b370fda" checkpoint/shiftleft shiftleft code-scan -s /tmp/
-        
+          docker run -v=$(pwd):/tmp/ -e "CHKP_CLOUDGUARD_ID=24fdfac3-5739-4576-b916-bfcf6b370fda" -e \
+          "CHKP_CLOUDGUARD_SECRET=spn6sacefhqxsbxw1snnhftn" checkpoint/shiftleft shiftleft code-scan -s /tmp/
+          
